@@ -1,0 +1,13 @@
+/* Estilos padrão (modo claro) */
+body {
+    background-color: white;
+    color: black;
+}
+
+/* Estilos para o modo escuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+}
