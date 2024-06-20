@@ -1,25 +1,32 @@
-const releases = [
-    {
-        name: 'Meu Programa Incrível v1.0',
-        url: 'https://github.com/seu-usuario/seu-repositorio/releases/download/v1.0/meu-programa-incrivel-v1.0.zip'
-    },
-    {
-        name: 'Ferramenta Útil v2.1',
-        url: 'https://github.com/seu-usuario/seu-repositorio/releases/download/v2.1/ferramenta-util-v2.1.zip'
-    },
-    {
-        name: 'Plugin Poderoso v3.5',
-        url: 'https://github.com/seu-usuario/seu-repositorio/releases/download/v3.5/plugin-poderoso-v3.5.zip'
-    }
-    // Adicione quantos itens de download desejar, seguindo a mesma estrutura
-];
-
-const downloadList = document.getElementById('download-list');
-releases.forEach(release => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = release.url;
-    a.textContent = release.name;
-    li.appendChild(a);
-    downloadList.appendChild(li);
+document.addEventListener("DOMContentLoaded", function() {
+    fetchGitHubReleases();
 });
+
+async function fetchGitHubReleases() {
+    const repo = "PHOENIXSRD/quickfiles"; // Substitua Pelo Seu Nome De Usuário E Nome Do Repositório
+    const apiUrl = `https://api.github.com/repos/${repo}/releases`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const releases = await response.json();
+
+        // Limpa A Lista De Releases
+        const releasesList = document.getElementById("releases-list");
+        releasesList.innerHTML = "";
+
+        // Adiciona Cada Release Á Lista
+        releases.forEach(release => {
+            const releaseDiv = document.createElement("div");
+            releaseDiv.classList.add("release");
+
+            releaseDiv.innerHTML = `
+                <h3><a href="${release.html_url}" target="_blank">${release.name}</a></h3>
+                <div class="Description">${release.body}</div>
+            `;
+
+            releasesList.appendChild(releaseDiv);
+        });
+    } catch (error) {
+        console.error("Erro Ao Recuperar Os Releases:", error);
+    }
+}
