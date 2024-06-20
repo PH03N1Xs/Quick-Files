@@ -1,7 +1,7 @@
 const releases = [
     {
-        name: 'Baixar Kung Fu Panda',
-        url: 'https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/Kung.Fu.Panda.mp4'
+        name: 'Meu Programa Incrível v1.0',
+        url: 'https://github.com/seu-usuario/seu-repositorio/releases/download/v1.0/meu-programa-incrivel-v1.0.zip'
     },
     {
         name: 'Ferramenta Útil v2.1',
