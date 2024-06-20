@@ -1,32 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-    fetchGitHubReleases();
-});
+const releasesUrl = 'https://api.github.com/repos/PHOENIXSRD/quickfiles/releases';
 
-async function fetchGitHubReleases() {
-    const repo = "PHOENIXSRD/quickfiles"; // Substitua Pelo Seu Nome De Usuário E Nome Do Repositório
-    const apiUrl = `https://api.github.com/repos/${repo}/releases`;
-
+async function fetchReleases() {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(releasesUrl);
         const releases = await response.json();
-
-        // Limpa A Lista De Releases
-        const releasesList = document.getElementById("releases-list");
-        releasesList.innerHTML = "";
-
-        // Adiciona Cada Release Á Lista
-        releases.forEach(release => {
-            const releaseDiv = document.createElement("div");
-            releaseDiv.classList.add("release");
-
-            releaseDiv.innerHTML = `
-                <h3><a href="${release.html_url}" target="_blank">${release.name}</a></h3>
-                <div class="Description">${release.body}</div>
-            `;
-
-            releasesList.appendChild(releaseDiv);
-        });
+        displayReleases(releases);
     } catch (error) {
-        console.error("Erro Ao Recuperar Os Releases:", error);
+        console.error('Erro Ao Buscar Releases:', error);
     }
 }
+
+function displayReleases(releases) {
+    const downloadsList = document.getElementById('downloads-list');
+    releases.forEach(release => {
+        const releaseName = release.name;
+        const releaseAssets = release.assets;
+        const releaseEntry = document.createElement('div');
+        releaseEntry.classList.add('release-entry');
+        releaseEntry.innerHTML = `
+            <h2>${releaseName}</h2>
+            <ul>
+                ${releaseAssets.map(asset => `<li><a href="${asset.browser_download_url}">${asset.name}</a></li>`).join('')}
+            </ul>
+        `;
+        downloadsList.appendChild(releaseEntry);
+    });
+}
+
+fetchReleases();
