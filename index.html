@@ -1,44 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Site De Downloads</title>
-    <style>
-        /* Estilos padrão (modo claro) */
-        body {
-            background-color: white;
-            color: black;
-            font-family: Arial, sans-serif;
-        }
-
-        a {
-            color: blue;
-        }
-
-        /* Estilos para o modo escuro */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: black;
-                color: white;
-            }
-
-            a {
-                color: lightblue;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Bem-Vindo Ao Meu Site De Downloads!</h1>
-    <p>Para Baixar Os Arquivos Disponíveis, Clique Nos Links Abaixo:</p>
-    <ul>
-        <li><a href="https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/Kung.Fu.Panda.mp4">Baixar Kung Fu Panda</a></li>
-        <li><a href="https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/VIDEOSTORE.2.5.pkg">Baixar Videostore</a></li>
-        <li><a href="https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/Girl.Skin.Pack.zip">Baixar Girl Skin Pack</a></li>
-        <li><a href="https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/CFW.4.91.BETA.9.zip">Baixar CFW 4.91 BETA9</a></li>
-        <li><a href="https://github.com/PHOENIXSRD/quickfiles/releases/download/v5.9-beta.3/Meu.Mundo.Mine.zip">Baixar Meu Mundo Mine</a></li>
-        <!-- Adicione Mais Links Conforme Necessário -->
-    </ul>
+    <header>
+        <h1>Meu Site De Downloads</h1>
+        <button id="theme-toggle">Modo Escuro</button>
+    </header>
+    <main>
+        <section id="downloads">
+            <h2>Últimos Downloads</h2>
+            <ul id="download-list">
+                <!-- Links de download serão inseridos aqui -->
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
